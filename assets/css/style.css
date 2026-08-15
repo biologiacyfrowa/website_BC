@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2c5f2d;
+  color: white;
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Hero section */
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+
+.hero h1 {
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #2c5f2d;
+  color: white;
+  margin-top: 2rem;
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+}
