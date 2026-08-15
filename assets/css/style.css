@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +9,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Merriweather', Georgia, serif;
   color: #222;
   line-height: 1.6;
 }
@@ -84,11 +88,10 @@ footer {
   justify-content: center;
 }
 
-/* Tło z logo — efekt lekkiego przybliżenia przy starcie */
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('../img/logo.png'); /* podmień na ścieżkę do Waszego logo */
+  background-image: url('../img/LOGO_BC.jpg');
   background-size: cover;
   background-position: center;
   transform: scale(1);
@@ -100,14 +103,12 @@ footer {
   to   { transform: scale(1.08); }
 }
 
-/* Przyciemnienie tła, żeby tekst był czytelny */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
 }
 
-/* Tytuł na środku — pojawia się (fade + lekkie przesunięcie w górę) */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -117,60 +118,63 @@ footer {
 }
 
 .hero-title {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 900;
   color: white;
   font-size: clamp(1.8rem, 5vw, 3.2rem);
-  font-weight: 700;
   text-shadow: 0 2px 12px rgba(0,0,0,0.5);
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Kartka "wysuwająca się" z boku */
+/* Kartka wysuwana z LEWEJ strony */
 .hero-card {
   position: absolute;
-  right: 0;
+  left: 0;
   top: 50%;
-  transform: translate(100%, -50%);
+  transform: translate(-100%, -50%);
   z-index: 2;
   max-width: 320px;
   background: white;
   color: #222;
   padding: 1.8rem;
-  border-radius: 12px 0 0 12px;
-  box-shadow: -6px 0 20px rgba(0,0,0,0.25);
-  animation: slideInRight 1s ease-out 1.4s forwards;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 6px 0 20px rgba(0,0,0,0.25);
+  animation: slideInLeft 1s ease-out 1.4s forwards;
 }
 
-@keyframes slideInRight {
-  from { transform: translate(100%, -50%); }
+@keyframes slideInLeft {
+  from { transform: translate(-100%, -50%); }
   to   { transform: translate(0, -50%); }
 }
 
-/* Podpowiedź scrolla */
-.scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 0.9rem;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out 2.2s forwards, bounce 2s ease-in-out 3.2s infinite;
+/* Strzałka pod tytułem — klikalna, animacja pojawienia + delikatny bounce */
+.scroll-arrow {
+  position: relative;
   z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  opacity: 0;
+  cursor: pointer;
+  animation: fadeInUp 1s ease-out 2.2s forwards, bounce 2s ease-in-out 3.2s infinite;
+}
+
+.scroll-arrow svg {
+  transition: transform 0.2s ease;
+}
+
+.scroll-arrow:hover svg {
+  transform: translateY(4px);
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%      { transform: translateX(-50%) translateY(8px); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
 }
 
 /* Sekcja O nas */
@@ -180,19 +184,19 @@ footer {
   margin: 0 auto;
 }
 
-/* Responsywność — na mobilnych kartka na dole zamiast z boku */
+/* Mobile — kartka na dole zamiast z boku */
 @media (max-width: 700px) {
   .hero-card {
-    right: 50%;
+    left: 50%;
     top: auto;
     bottom: 4rem;
-    transform: translate(50%, 100px);
+    transform: translate(-50%, 100px);
     border-radius: 12px;
     max-width: 85%;
   }
 
-  @keyframes slideInRight {
-    from { transform: translate(50%, 100px); opacity: 0; }
-    to   { transform: translate(50%, 0); opacity: 1; }
+  @keyframes slideInLeft {
+    from { transform: translate(-50%, 100px); opacity: 0; }
+    to   { transform: translate(-50%, 0); opacity: 1; }
   }
 }
