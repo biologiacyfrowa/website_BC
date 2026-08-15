@@ -16,7 +16,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #2c5f2d;
+  background-color: #4245a4;
   color: white;
 }
 
@@ -55,7 +55,7 @@ body {
 footer {
   padding: 1.5rem;
   text-align: center;
-  background-color: #2c5f2d;
+  background-color: #4245a4;
   color: white;
   margin-top: 2rem;
 }
@@ -71,5 +71,128 @@ footer {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
+  }
+}
+
+/* HERO — pełny ekran */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tło z logo — efekt lekkiego przybliżenia przy starcie */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../img/logo.png'); /* podmień na ścieżkę do Waszego logo */
+  background-size: cover;
+  background-position: center;
+  transform: scale(1);
+  animation: zoomIn 6s ease-out forwards;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
+
+/* Przyciemnienie tła, żeby tekst był czytelny */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* Tytuł na środku — pojawia się (fade + lekkie przesunięcie w górę) */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease-out 0.4s forwards;
+}
+
+.hero-title {
+  color: white;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 700;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Kartka "wysuwająca się" z boku */
+.hero-card {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(100%, -50%);
+  z-index: 2;
+  max-width: 320px;
+  background: white;
+  color: #222;
+  padding: 1.8rem;
+  border-radius: 12px 0 0 12px;
+  box-shadow: -6px 0 20px rgba(0,0,0,0.25);
+  animation: slideInRight 1s ease-out 1.4s forwards;
+}
+
+@keyframes slideInRight {
+  from { transform: translate(100%, -50%); }
+  to   { transform: translate(0, -50%); }
+}
+
+/* Podpowiedź scrolla */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.9rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 2.2s forwards, bounce 2s ease-in-out 3.2s infinite;
+  z-index: 2;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Sekcja O nas */
+.section {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsywność — na mobilnych kartka na dole zamiast z boku */
+@media (max-width: 700px) {
+  .hero-card {
+    right: 50%;
+    top: auto;
+    bottom: 4rem;
+    transform: translate(50%, 100px);
+    border-radius: 12px;
+    max-width: 85%;
+  }
+
+  @keyframes slideInRight {
+    from { transform: translate(50%, 100px); opacity: 0; }
+    to   { transform: translate(50%, 0); opacity: 1; }
   }
 }
