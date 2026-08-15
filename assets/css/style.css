@@ -1,5 +1,6 @@
 /* ============================
-   ZMIENNE KOLORÓW
+   ZMIENNE KOLORÓW — uproszczona paleta
+   Głównie dwa kolory: granat + ciemna czerwień, reszta jako subtelne akcenty
    ============================ */
 :root {
   --color-red-light: #C84557;
@@ -9,8 +10,7 @@
   --color-purple: #666CB7;
   --color-blue-dark: #4245A4;
 
-  --nav-collapsed: 76px;
-  --nav-expanded: 280px;
+  --card-width: 320px;
 }
 
 /* ============================
@@ -27,127 +27,97 @@ html {
 }
 
 body {
+  /* TYMCZASOWO Merriweather Bold — podmień na Rosalia, gdy dodacie plik czcionki (patrz komentarz niżej) */
   font-family: 'Merriweather', Georgia, serif;
+  font-weight: 700;
   color: #222;
   line-height: 1.6;
-  margin-right: var(--nav-collapsed);
+}
+
+/*
+  Jak podmienić na docelową czcionkę Rosalia:
+  1. Kupcie/pobierzcie licencjonowany plik .woff2 (Rosalia nie jest dostępna przez Google Fonts)
+  2. Wgrajcie plik do assets/fonts/rosalia.woff2
+  3. Dodajcie na górze tego pliku:
+     @font-face {
+       font-family: 'Rosalia';
+       src: url('../fonts/rosalia.woff2') format('woff2');
+       font-weight: 700;
+     }
+  4. Podmieńcie font-family w body i .hero-title na: 'Rosalia', 'Merriweather', Georgia, serif;
+*/
+
+/* ============================
+   IKONKA MENU — prawy górny róg
+   ============================ */
+.menu-toggle {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 30;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background-color: var(--color-red-dark);
+  transform: scale(1.05);
 }
 
 /* ============================
-   PIONOWY NAVBAR — z prawej strony
+   ROZWIJANE MENU (dropdown)
    ============================ */
-.side-nav {
+.dropdown-menu {
   position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: var(--nav-collapsed);
+  top: 4.6rem;
+  right: 1.2rem;
+  z-index: 25;
+  min-width: 210px;
   background-color: var(--color-blue-dark);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.6rem 0 2rem;
-  gap: 2.2rem;
-  z-index: 20;
-  overflow: hidden;
-  box-shadow: -6px 0 18px rgba(0, 0, 0, 0.25);
-  transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-.side-nav.is-expanded {
-  width: var(--nav-expanded);
-  align-items: flex-start;
-  padding-left: 1.4rem;
-  padding-right: 1.4rem;
-}
-
-/* Logo — okrągła ikonka, klika się aby rozwinąć/zwinąć menu */
-.side-nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  width: 100%;
-  cursor: pointer;
-}
-
-.side-nav-logo-icon {
-  width: 46px;
-  height: 46px;
-  min-width: 46px;
-  border-radius: 50%;
-  background-image: url('../img/LOGO_BC_blue.jpg');
-  background-size: cover;
-  background-position: center;
-  border: 2px solid var(--color-blue-light);
-  transition: transform 0.3s ease;
-}
-
-.side-nav-logo:hover .side-nav-logo-icon {
-  transform: scale(1.08);
-}
-
-.side-nav-logo-text {
-  font-weight: 700;
-  font-size: 0.95rem;
-  line-height: 1.3;
-  white-space: nowrap;
+  border-radius: 14px;
+  padding: 0.7rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   opacity: 0;
-  max-width: 0;
-  overflow: hidden;
-  transition: opacity 0.25s ease, max-width 0.35s ease;
+  visibility: hidden;
+  transform: translateY(-14px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
-.side-nav.is-expanded .side-nav-logo-text {
+.dropdown-menu.is-open {
   opacity: 1;
-  max-width: 220px;
-  transition: opacity 0.3s ease 0.15s, max-width 0.35s ease;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-/* Linki menu */
-.side-nav-links {
+.dropdown-menu ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
+  gap: 0.3rem;
 }
 
-.side-nav-links a {
+.dropdown-menu a {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
   color: white;
   text-decoration: none;
-  padding: 0.7rem;
-  border-radius: 10px;
-  transition: background 0.2s ease;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
 }
 
-.side-nav:not(.is-expanded) .side-nav-links a {
-  justify-content: center;
-}
-
-.side-nav-links a:hover {
-  background-color: var(--color-purple);
-}
-
-.side-nav-links svg {
-  flex-shrink: 0;
-}
-
-.side-nav-links span {
-  white-space: nowrap;
-  opacity: 0;
-  max-width: 0;
-  overflow: hidden;
-  transition: opacity 0.25s ease, max-width 0.35s ease;
-}
-
-.side-nav.is-expanded .side-nav-links span {
-  opacity: 1;
-  max-width: 200px;
-  transition: opacity 0.3s ease 0.15s, max-width 0.35s ease;
+.dropdown-menu a:hover {
+  background-color: var(--color-red-dark);
 }
 
 /* ============================
@@ -168,25 +138,25 @@ body {
   background-image: url('../img/LOGO_BC_blue.jpg');
   background-size: cover;
   background-position: center;
-  transform: scale(1);
+  transform: scale(1.15);
   animation: zoomIn 6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.2s ease-out;
   will-change: transform;
 }
 
 @keyframes zoomIn {
   from { transform: scale(1); }
-  to   { transform: scale(1.1); }
+  to   { transform: scale(1.15); }
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
+  /* Uproszczony gradient — dwa kolory zamiast trzech */
   background: linear-gradient(
     160deg,
     rgba(66, 69, 164, 0.55) 0%,
-    rgba(102, 108, 183, 0.4) 45%,
-    rgba(145, 39, 62, 0.5) 100%
+    rgba(145, 39, 62, 0.45) 100%
   );
 }
 
@@ -199,7 +169,7 @@ body {
 }
 
 .hero-title {
-  font-family: 'Merriweather', Georgia, serif;
+  font-family: 'Merriweather', Georgia, serif; /* podmień na 'Rosalia' po dodaniu pliku czcionki */
   font-weight: 900;
   color: white;
   font-size: clamp(1.8rem, 5vw, 3.2rem);
@@ -219,14 +189,15 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Kartka wysuwana z LEWEJ strony — wrapper (pozycja + animacja wejścia) */
+/* ============================
+   KARTKA Z OPISEM (lewa strona)
+   ============================ */
 .hero-card-wrapper {
   position: absolute;
   left: 0;
   top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
-  display: flex;
-  align-items: stretch;
   opacity: 0;
   animation: fadeInWrapper 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
 }
@@ -236,10 +207,9 @@ body {
   to   { opacity: 1; transform: translate(0, -50%); }
 }
 
-/* Sama kartka — chowanie/pokazywanie po kliknięciu */
 .hero-card {
-  max-width: 320px;
-  background: var(--color-blue-dark);
+  width: var(--card-width);
+  background-color: var(--color-blue-dark);
   color: white;
   padding: 1.8rem;
   border-radius: 0 12px 12px 0;
@@ -257,11 +227,20 @@ body {
   transform: translateX(-100%);
 }
 
-/* Przycisk do zwijania/rozwijania — zawsze widoczny przy krawędzi */
+/*
+  Przycisk zwijania/rozwijania kartki — POZYCJONOWANY NIEZALEŻNIE od kartki
+  (bezpośrednio względem .hero, a nie względem .hero-card), dzięki temu
+  ZAWSZE zostaje widoczny w tym samym miejscu, nawet gdy kartka jest schowana.
+*/
 .hero-card-toggle {
-  align-self: center;
+  position: absolute;
+  left: var(--card-width);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
   width: 32px;
-  background: var(--color-blue-dark);
+  height: 60px;
+  background-color: var(--color-blue-dark);
   border: none;
   border-radius: 0 8px 8px 0;
   color: white;
@@ -270,11 +249,13 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 4px 0 14px rgba(0, 0, 0, 0.25);
-  transition: background 0.2s ease;
+  transition: background-color 0.2s ease;
+  opacity: 0;
+  animation: fadeInWrapper 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
 }
 
 .hero-card-toggle:hover {
-  background: var(--color-purple);
+  background-color: var(--color-red-dark);
 }
 
 .hero-card-toggle svg {
@@ -283,33 +264,6 @@ body {
 
 .hero-card-toggle.is-collapsed svg {
   transform: rotate(180deg);
-}
-
-/* Strzałka scrolla — pod tytułem */
-.scroll-arrow {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
-  cursor: pointer;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out 2s forwards, bounce 1.8s ease-in-out 3s infinite;
-}
-
-.scroll-arrow svg {
-  filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.6));
-  transition: transform 0.2s ease;
-}
-
-.scroll-arrow:hover svg {
-  transform: translateY(6px) scale(1.1);
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(10px); }
 }
 
 /* ============================
@@ -367,45 +321,39 @@ footer {
    ============================ */
 @media (max-width: 700px) {
   :root {
-    --nav-collapsed: 56px;
-    --nav-expanded: 220px;
+    --card-width: 82vw;
   }
 
-  .side-nav {
-    padding-top: 1rem;
-    gap: 1.6rem;
+  .menu-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
   }
 
-  .side-nav-logo-icon {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-  }
-
-  .hero {
-    height: 100vh;
+  .dropdown-menu {
+    top: 4rem;
+    right: 1rem;
+    min-width: 180px;
   }
 
   .hero-card-wrapper {
-    left: auto;
-    right: var(--nav-collapsed);
+    left: 50%;
     top: auto;
-    bottom: 3rem;
-    flex-direction: column;
-    align-items: center;
+    bottom: 5.2rem;
+    transform: translateX(-50%);
     animation: fadeInWrapperMobile 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
   }
 
   @keyframes fadeInWrapperMobile {
-    from { opacity: 0; transform: translate(0, 40px); }
-    to   { opacity: 1; transform: translate(0, 0); }
+    from { opacity: 0; transform: translate(-50%, 40px); }
+    to   { opacity: 1; transform: translate(-50%, 0); }
   }
 
   .hero-card {
     border-radius: 12px 12px 0 0;
     border-left: none;
     border-top: 5px solid var(--color-red-dark);
-    max-width: 80vw;
     transform: translateY(0);
   }
 
@@ -414,10 +362,13 @@ footer {
   }
 
   .hero-card-toggle {
-    width: 100%;
+    left: 50%;
+    top: auto;
+    bottom: 3rem;
+    transform: translate(-50%, 0);
+    width: var(--card-width);
     height: 30px;
     border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   }
 
   .hero-card-toggle svg {
