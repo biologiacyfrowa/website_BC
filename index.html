@@ -11,16 +11,21 @@
 </head>
 <body>
 
-  <nav class="side-nav" id="sideNav">
-    <div class="side-nav-logo" id="sideNavToggle" aria-label="Rozwiń lub zwiń menu">
-      <div class="side-nav-logo-icon"></div>
-      <span class="side-nav-logo-text">Studenckie Koło Naukowe Biologów Cyfrowych</span>
-    </div>
+  <!-- Ikonka menu w prawym górnym rogu -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Otwórz lub zamknij menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+      <path d="M4 7h16"/>
+      <path d="M4 12h16"/>
+      <path d="M4 17h16"/>
+    </svg>
+  </button>
 
-    <ul class="side-nav-links">
+  <!-- Rozwijane menu -->
+  <nav class="dropdown-menu" id="dropdownMenu">
+    <ul>
       <li>
         <a href="index.html">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
             <path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>
           </svg>
           <span>Strona główna</span>
@@ -28,7 +33,7 @@
       </li>
       <li>
         <a href="aktualnosci.html">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
             <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
           </svg>
           <span>Aktualności</span>
@@ -36,7 +41,7 @@
       </li>
       <li>
         <a href="projekty.html">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
             <path d="M3 7h6l2 2h10v10H3z"/>
           </svg>
           <span>Projekty</span>
@@ -44,7 +49,7 @@
       </li>
       <li>
         <a href="kontakt.html">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
             <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
           </svg>
           <span>Kontakt</span>
@@ -60,24 +65,18 @@
 
       <div class="hero-content">
         <h1 class="hero-title">Studenckie Koło Naukowe<br>Biologów Cyfrowych</h1>
-
-        <a href="#o-nas" class="scroll-arrow" aria-label="Przewiń do sekcji O nas">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#B6DAEB" stroke-width="2.5">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </a>
       </div>
 
       <div class="hero-card-wrapper">
         <div class="hero-card" id="heroCard">
           <p>Koło Naukowe Uniwersytetu Łódzkiego z inicjatywy studentów kierunku Biologia i Biomedycyna Cyfrowa.</p>
         </div>
-        <button class="hero-card-toggle" id="heroCardToggle" aria-label="Pokaż lub ukryj opis koła">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-            <path d="M15 6l-6 6 6 6"/>
-          </svg>
-        </button>
       </div>
+      <button class="hero-card-toggle" id="heroCardToggle" aria-label="Pokaż lub ukryj opis koła">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+          <path d="M15 6l-6 6 6 6"/>
+        </svg>
+      </button>
     </section>
 
     <section id="o-nas" class="section">
@@ -93,6 +92,7 @@
   </footer>
 
   <script>
+    // Ruch tła (logo) za kursorem myszy
     const heroBg = document.querySelector('.hero-bg');
     const hero = document.querySelector('.hero');
 
@@ -101,14 +101,14 @@
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-      const moveX = x * 30;
-      const moveY = y * 30;
+      const moveX = x * 80;
+      const moveY = y * 80;
 
-      heroBg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+      heroBg.style.transform = `scale(1.15) translate(${moveX}px, ${moveY}px)`;
     });
 
     hero.addEventListener('mouseleave', () => {
-      heroBg.style.transform = `scale(1.1) translate(0, 0)`;
+      heroBg.style.transform = `scale(1.15) translate(0, 0)`;
     });
 
     // Zwijanie / rozwijanie kartki z opisem
@@ -120,12 +120,20 @@
       heroCardToggle.classList.toggle('is-collapsed');
     });
 
-    // Rozwijanie / zwijanie pionowego menu
-    const sideNav = document.getElementById('sideNav');
-    const sideNavToggle = document.getElementById('sideNavToggle');
+    // Otwieranie / zamykanie rozwijanego menu
+    const menuToggle = document.getElementById('menuToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
 
-    sideNavToggle.addEventListener('click', () => {
-      sideNav.classList.toggle('is-expanded');
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('is-open');
+    });
+
+    // Zamknij menu po kliknięciu gdziekolwiek poza nim
+    document.addEventListener('click', (e) => {
+      if (!dropdownMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        dropdownMenu.classList.remove('is-open');
+      }
     });
 
     // Animacja pojawiania się sekcji przy przewijaniu
