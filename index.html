@@ -12,7 +12,7 @@
 <body>
 
   <nav class="navbar">
-    <div class="logo">Koło Naukowe Biologów Cyfrowych</div>
+    <div class="logo">Studenckie Koło Naukowe Biologów Cyfrowych</div>
     <ul class="nav-links">
       <li><a href="index.html">Strona główna</a></li>
       <li><a href="o-nas.html">Aktualności</a></li>
@@ -31,14 +31,14 @@
         </div>
 
         <div class="hero-card">
-        <p>Krótki opis: czym zajmuje się koło, jakie projekty prowadzicie, do kogo jest skierowane.</p>
+        <p>Koło Naukowe Uniwersytetu Łódzkiego z inicjatywy studentów kieruku Biologia i Biomedycyna Cyfrowa.</p>
         </div>
 
         <a href="#o-nas" class="scroll-arrow" aria-label="Przewiń do sekcji O nas">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#91273e" stroke-width="2.5">
                 <path d="M6 9l6 6 6-6"/>
             </svg>
-            </a>
+        </a>
     </section>
 
     <section id="o-nas" class="section">
@@ -50,5 +50,25 @@
   <footer>
     <p>&copy; 2026 Koło Naukowe Biologów Cyfrowych</p>
   </footer>
+
+    <script>
+    const heroBg = document.querySelector('.hero-bg');
+    const hero = document.querySelector('.hero');
+
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 to 0.5
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        const moveX = x * 25; // max 20px shift horizontally
+        const moveY = y * 25; // max 20px shift vertically
+
+        heroBg.style.transform = `scale(1.08) translate(${moveX}px, ${moveY}px)`;
+    });
+
+    hero.addEventListener('mouseleave', () => {
+        heroBg.style.transform = `scale(1.08) translate(0, 0)`;
+    });
+    </script>
 
 </body>
