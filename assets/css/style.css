@@ -96,6 +96,8 @@ footer {
   background-position: center;
   transform: scale(1);
   animation: zoomIn 6s ease-out forwards;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
 }
 
 @keyframes zoomIn {
@@ -151,30 +153,25 @@ footer {
   to   { transform: translate(0, -50%); }
 }
 
-/* Strzałka pod tytułem — klikalna, animacja pojawienia + delikatny bounce */
 .scroll-arrow {
   position: relative;
   z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1.5rem;
-  opacity: 0;
+  margin-top: 2rem;
   cursor: pointer;
+  opacity: 0;
   animation: fadeInUp 1s ease-out 2.2s forwards, bounce 2s ease-in-out 3.2s infinite;
 }
 
 .scroll-arrow svg {
+  filter: drop-shadow(0 1px 3px rgba(255,255,255,0.6));
   transition: transform 0.2s ease;
 }
 
 .scroll-arrow:hover svg {
   transform: translateY(4px);
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(8px); }
 }
 
 /* Sekcja O nas */
