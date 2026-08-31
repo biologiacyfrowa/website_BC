@@ -63,6 +63,8 @@ nav {
     padding: 10%;
     gap: 1.5rem;
     clip-path: polygon(0 15%, 100% 0, 100% 80%, 0 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-bg {
