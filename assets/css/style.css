@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: "Sriracha", Arial, sans-serif;
+  font-weight: 400;
+  color: #DFEFF6;
+  background-color: #1B1D3A;
+  line-height: 1.6;
+}
+
+h1 {
+    font-family: "Gochi Hand", Arial, sans-serif;
+    font-size: 85px;
+    color: #DFEFF6;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #4043A0;
+    position: relative;
+}
+
+.logo {
+    font-family: "Gochi Hand", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    color: #DFEFF6;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    display: inline-block;
+    color: #DFEFF6;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #C4455C;
+    transform: translateY(-5px);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    text-align: left;
+    padding: 10%;
+    gap: 1.5rem;
+    clip-path: polygon(0 15%, 100% 0, 100% 80%, 0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/LOGO_BC_blue_right.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: transform 0.2s ease-out;
+}
+
+#o-nas {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  background-color: #4043A0;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.photo-frame {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 4px solid #C4455C;
+  box-shadow: 0 0 40px rgba(196, 69, 92, 0.5);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #DFEFF6;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #4245A4;
+    padding: 1rem 0;
+    z-index: 100;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 0.8rem 0;
+  }
+}

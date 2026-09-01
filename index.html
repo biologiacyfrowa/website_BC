@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oficjalna strona Studenckiego Koła Naukowego Biologów Cyfrowych."
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Sriracha&display=swap" rel="stylesheet">
+        
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <nav>
+        <div class="logo">skn biologów cyfrowych</div>
+        
+        <button class="hamburger" id="hamburger">☰</button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">STRONA GŁÓWNA</a></li>
+            <li><a href="#o-nas">O NAS</a></li>
+            <li><a href="#kontakt">KONTAKT</a></li>
+            <li><a href="#aktualnosci">AKTUALNOŚCI</a></li>
+            <li><a href="#projekty">PROJEKTY</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <h1>BIOLOGIA CYFROWA</h1>
+        <p>Koło Naukowe Uniwersytetu Łódzkiego z inicjatywy<br>
+            studentów kierunku Biologia i Biomedycyna Cyfrowa</p>
+    </section>
+    
+    <main>
+        <section id="o-nas">
+            <div class="about-content">
+                <div class="photo-frame">
+                    <img src="assets/img/biobankINS.jpg">
+                </div>
+                <div class="card">
+                    <h2>O NAS</h2>
+                    <p>Cyfrowi Biolodzy zrzeszają pasjonatów biologii oraz informatyki. 
+                    Naszym celem jest powiązanie zagadnień biologicznych z 
+                    narzędziami cyfrowymi w ciekawy oraz zrozumiały sposób.
+                
+                    Koło naukowe zostało stworzone z inicjatywy studentów kierunku Biologia
+                    i Biomedycyna Cyfrowa na Uniwersytecie Łódzkim, wydziale Biologii i Ochrony Środowiska.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Koło Naukowe Biologów Cyfrowych</p>
+    </footer>
+
+    <script>
+    const hero = document.querySelector('.hero');
+    const heroBg = document.querySelector('.hero-bg');
+
+    hero.addEventListener('mousemove', function(event) {
+        const rect = hero.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        const moveX = x * 30;
+        const moveY = y * 30;
+
+        heroBg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+    });
+
+    hero.addEventListener('mouseleave', function() {
+        heroBg.style.transform = `scale(1.1) translate(0, 0)`;
+    });
+
+    const hamburger = document.querySelector('#hamburger');
+    const navLinks = document.querySelector('#nav-links');
+
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+
+    navLinkItems.forEach(function(link) {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+        });
+    });
+    </script>
+
+</body>
+</html>
