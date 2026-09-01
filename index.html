@@ -1,155 +1,96 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SKN Biologów Cyfrowych</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oficjalna strona Studenckiego Koła Naukowego Biologów Cyfrowych."
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Sriracha&display=swap" rel="stylesheet">
+        
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    
+    <nav>
+        <div class="logo">skn biologów cyfrowych</div>
+        
+        <button class="hamburger" id="hamburger">☰</button>
 
-  <!-- Ikonka menu w prawym górnym rogu -->
-  <button class="menu-toggle" id="menuToggle" aria-label="Otwórz lub zamknij menu">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-      <path d="M4 7h16"/>
-      <path d="M4 12h16"/>
-      <path d="M4 17h16"/>
-    </svg>
-  </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">STRONA GŁÓWNA</a></li>
+            <li><a href="#o-nas">O NAS</a></li>
+            <li><a href="#kontakt">KONTAKT</a></li>
+            <li><a href="#aktualnosci">AKTUALNOŚCI</a></li>
+            <li><a href="#projekty">PROJEKTY</a></li>
+        </ul>
+    </nav>
 
-  <!-- Rozwijane menu -->
-  <nav class="dropdown-menu" id="dropdownMenu">
-    <ul>
-      <li>
-        <a href="index.html">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>
-          </svg>
-          <span>Strona główna</span>
-        </a>
-      </li>
-      <li>
-        <a href="aktualnosci.html">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
-          </svg>
-          <span>Aktualności</span>
-        </a>
-      </li>
-      <li>
-        <a href="projekty.html">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <path d="M3 7h6l2 2h10v10H3z"/>
-          </svg>
-          <span>Projekty</span>
-        </a>
-      </li>
-      <li>
-        <a href="kontakt.html">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
-          </svg>
-          <span>Kontakt</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <main>
     <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <h1 class="hero-title">Studenckie Koło Naukowe<br>Biologów Cyfrowych</h1>
-      </div>
-
-      <div class="hero-card-wrapper">
-        <div class="hero-card" id="heroCard">
-          <p>Koło Naukowe Uniwersytetu Łódzkiego z inicjatywy studentów kierunku Biologia i Biomedycyna Cyfrowa.</p>
-        </div>
-      </div>
-      <button class="hero-card-toggle" id="heroCardToggle" aria-label="Pokaż lub ukryj opis koła">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-          <path d="M15 6l-6 6 6 6"/>
-        </svg>
-      </button>
+        <div class="hero-bg"></div>
+        <h1>BIOLOGIA CYFROWA</h1>
+        <p>Koło Naukowe Uniwersytetu Łódzkiego z inicjatywy<br>
+            studentów kierunku Biologia i Biomedycyna Cyfrowa</p>
     </section>
+    
+    <main>
+        <section id="o-nas">
+            <div class="about-content">
+                <div class="photo-frame">
+                    <img src="assets/img/biobankINS.jpg">
+                </div>
+                <div class="card">
+                    <h2>O NAS</h2>
+                    <p>Cyfrowi Biolodzy zrzeszają pasjonatów biologii oraz informatyki. 
+                    Naszym celem jest powiązanie zagadnień biologicznych z 
+                    narzędziami cyfrowymi w ciekawy oraz zrozumiały sposób.
+                
+                    Koło naukowe zostało stworzone z inicjatywy studentów kierunku Biologia
+                    i Biomedycyna Cyfrowa na Uniwersytecie Łódzkim, wydziale Biologii i Ochrony Środowiska.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <section id="o-nas" class="section">
-      <div class="section-inner">
-        <h2>O nas</h2>
-        <p>Tu wstawcie treść sekcji O nas...</p>
-      </div>
-    </section>
-  </main>
+    <footer>
+        <p>&copy; 2026 Koło Naukowe Biologów Cyfrowych</p>
+    </footer>
 
-  <footer>
-    <p>&copy; 2026 Koło Naukowe Biologów Cyfrowych</p>
-  </footer>
-
-  <script>
-    // Ruch tła (logo) za kursorem myszy
-    const heroBg = document.querySelector('.hero-bg');
+    <script>
     const hero = document.querySelector('.hero');
+    const heroBg = document.querySelector('.hero-bg');
 
-    hero.addEventListener('mousemove', (e) => {
-      const rect = hero.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
+    hero.addEventListener('mousemove', function(event) {
+        const rect = hero.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
 
-      const moveX = x * 80;
-      const moveY = y * 80;
+        const moveX = x * 30;
+        const moveY = y * 30;
 
-      heroBg.style.transform = `scale(1.15) translate(${moveX}px, ${moveY}px)`;
+        heroBg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
     });
 
-    hero.addEventListener('mouseleave', () => {
-      heroBg.style.transform = `scale(1.15) translate(0, 0)`;
+    hero.addEventListener('mouseleave', function() {
+        heroBg.style.transform = `scale(1.1) translate(0, 0)`;
     });
 
-    // Zwijanie / rozwijanie kartki z opisem
-    const heroCard = document.getElementById('heroCard');
-    const heroCardToggle = document.getElementById('heroCardToggle');
+    const hamburger = document.querySelector('#hamburger');
+    const navLinks = document.querySelector('#nav-links');
 
-    heroCardToggle.addEventListener('click', () => {
-      heroCard.classList.toggle('is-collapsed');
-      heroCardToggle.classList.toggle('is-collapsed');
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
     });
 
-    // Otwieranie / zamykanie rozwijanego menu
-    const menuToggle = document.getElementById('menuToggle');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+    const navLinkItems = document.querySelectorAll('.nav-links a');
 
-    menuToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdownMenu.classList.toggle('is-open');
+    navLinkItems.forEach(function(link) {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+        });
     });
-
-    // Zamknij menu po kliknięciu gdziekolwiek poza nim
-    document.addEventListener('click', (e) => {
-      if (!dropdownMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-        dropdownMenu.classList.remove('is-open');
-      }
-    });
-
-    // Animacja pojawiania się sekcji przy przewijaniu
-    const revealSections = document.querySelectorAll('.section');
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    revealSections.forEach((section) => revealObserver.observe(section));
-  </script>
+    </script>
 
 </body>
 </html>
