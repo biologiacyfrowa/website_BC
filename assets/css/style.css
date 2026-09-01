@@ -146,6 +146,7 @@ nav {
     width: 100%;
     background-color: #4245A4;
     padding: 1rem 0;
+    z-index: 100;
   }
 
   .nav-links.active {
