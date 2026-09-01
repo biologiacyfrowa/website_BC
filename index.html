@@ -15,6 +15,9 @@
     
     <nav>
         <div class="logo">skn biologów cyfrowych</div>
+        
+        <button class="hamburger" id="hamburger">☰</button>
+
         <ul class="nav-links">
             <li><a href="#">STRONA GŁÓWNA</a></li>
             <li><a href="#o-nas">O NAS</a></li>
@@ -71,6 +74,13 @@
 
     hero.addEventListener('mouseleave', function() {
         heroBg.style.transform = `scale(1.1) translate(0, 0)`;
+    });
+
+    const hamburger = document.querySelector('#hamburger');
+    const navLinks = document.querySelector('#nav-links');
+
+    hamburger.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
     });
     </script>
 
