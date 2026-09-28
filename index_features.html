@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oficjalna strona Studenckiego Koła Naukowego Biologów Cyfrowych.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Sriracha&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Sriracha", Arial, sans-serif;
+            font-weight: 400;
+            color: #DFEFF6;
+            background-color: #1B1D3A;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-family: "Gochi Hand", Arial, sans-serif;
+            font-size: 85px;
+            color: #DFEFF6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #4043A0;
+            position: relative;
+        }
+
+        .logo {
+            font-family: "Gochi Hand", Arial, sans-serif;
+            font-weight: 400;
+            font-size: 30px;
+            color: #DFEFF6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            color: #DFEFF6;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #C4455C;
+            transform: translateY(-5px);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: left;
+            padding: 10%;
+            gap: 1.5rem;
+            clip-path: polygon(0 15%, 100% 0, 100% 80%, 0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/img/LOGO_BC_blue_right.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transition: transform 0.2s ease-out;
+        }
+
+        #o-nas {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 6rem 2rem;
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            background-color: #4043A0;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .photo-frame {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 4px solid #C4455C;
+            box-shadow: 0 0 40px rgba(196, 69, 92, 0.5);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #DFEFF6;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #4245A4;
+                padding: 1rem 0;
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                padding: 0.8rem 0;
+            }
+        }
+
+        /* --- SEKCJE (PROJEKTY / AKTUALNOŚCI / KONTAKT) — przewijane, bez klikania --- */
+        .content-section {
+            width: 100%;
+            padding: 100px 20px;
+            border-top: 1px solid rgba(223, 239, 246, 0.08);
+        }
+
+        /* Gradient jasności: O NAS (najciemniej) -> PROJEKTY -> AKTUALNOŚCI -> KONTAKT (najjaśniej) */
+        #projekty {
+            background-color: #23264d;
+        }
+
+        #aktualnosci {
+            background-color: #2d3163;
+        }
+
+        #kontakt {
+            background-color: #383c7a;
+        }
+
+        .content-section-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .card-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-card {
+            background-color: #2b2b54;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #C4455C;
+            flex: 1;
+            min-width: 240px;
+            max-width: 320px;
+            text-align: left;
+        }
+
+        .info-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card p {
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .info-card a {
+            display: inline-block;
+            color: #90cdf4;
+            text-decoration: none;
+            font-weight: bold;
+            word-break: break-all;
+        }
+
+        .info-card a:hover {
+            text-decoration: underline;
+        }
+
+        .status {
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: normal;
+        }
+
+        .status--done {
+            background: #2f6b3a;
+            color: #d4f5dd;
+        }
+
+        .status--planned {
+            background: #6b5a2f;
+            color: #fff3cd;
+        }
+
+        .news-date {
+            display: block;
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+
+        .contact-card {
+            max-width: 420px;
+            margin: 0 auto;
+            background-color: #2b2b54;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #C4455C;
+            text-align: center;
+        }
+
+        .contact-card p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .join-btn {
+            display: inline-block;
+            margin-top: 16px;
+            background-color: #C4455C;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .join-btn:hover {
+            background-color: #a0364d;
+        }
+
+        /* --- Formularz kontaktowy --- */
+        .contact-wrapper {
+            display: flex;
+            gap: 30px;
+            align-items: stretch;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 280px;
+            max-width: 420px;
+            background-color: rgba(27, 29, 58, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #C4455C;
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border: 1px solid #4043A0;
+            border-radius: 8px;
+            background-color: #1B1D3A;
+            color: #DFEFF6;
+            font-family: "Sriracha", Arial, sans-serif;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .contact-form button {
+            background-color: #C4455C;
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .contact-form button:hover {
+            background-color: #a0364d;
+        }
+
+        .contact-extra {
+            flex: 1;
+            min-width: 240px;
+            max-width: 320px;
+            background-color: rgba(27, 29, 58, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #4043A0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .contact-extra p {
+            margin: 0;
+        }
+
+        .contact-extra span {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            opacity: 0.9;
+            margin-bottom: 6px;
+        }
+
+        .contact-extra a {
+            color: #DFEFF6;
+            font-weight: 700;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .contact-extra a:hover {
+            color: #C4455C;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">skn biologów cyfrowych</div>
+
+        <button class="hamburger" id="hamburger">☰</button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">STRONA GŁÓWNA</a></li>
+            <li><a href="#o-nas">O NAS</a></li>
+            <li><a href="#kontakt">KONTAKT</a></li>
+            <li><a href="#aktualnosci">AKTUALNOŚCI</a></li>
+            <li><a href="#projekty">PROJEKTY</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <h1>BIOLOGIA CYFROWA</h1>
+        <p>Koło Naukowe Uniwersytetu Łódzkiego z inicjatywy<br>
+            studentów kierunku Biologia i Biomedycyna Cyfrowa</p>
+    </section>
+
+    <main>
+        <section id="o-nas">
+            <div class="about-content">
+                <div class="photo-frame">
+                    <img src="assets/img/biobankINS.jpg" alt="Zdjęcie koła naukowego">
+                </div>
+                <div class="card">
+                    <h2>O NAS</h2>
+                    <p>Cyfrowi Biolodzy zrzeszają pasjonatów biologii oraz informatyki.
+                    Naszym celem jest powiązanie zagadnień biologicznych z
+                    narzędziami cyfrowymi w ciekawy oraz zrozumiały sposób.
+
+                    Koło naukowe zostało stworzone z inicjatywy studentów kierunku Biologia
+                    i Biomedycyna Cyfrowa na Uniwersytecie Łódzkim, wydziale Biologii i Ochrony Środowiska.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJEKTY -->
+        <section class="content-section" id="projekty">
+          <div class="content-section-inner">
+            <h2>Projekty</h2>
+            <div class="card-grid">
+                <div class="info-card">
+                    <h3>Symulacja CHO <span class="status status--done">Gotowy</span></h3>
+                    <p>Projekt realizowany w ramach działalności koła.</p>
+                    <a href="https://juliancia.github.io/simulate_cho/" target="_blank">🔗 Zobacz projekt</a>
+                </div>
+
+                <!--
+                    WZÓR: skopiuj ten blok, żeby dodać kolejny (planowany) projekt.
+                    - w <h3> wpisz nazwę projektu
+                    - klasa "status--done" = gotowy, "status--planned" = w planach
+                    - w <p> krótki opis
+                    - w href link do GitHuba/strony projektu (jeśli go jeszcze nie ma, zostaw href="#")
+
+                <div class="info-card">
+                    <h3>Nazwa projektu <span class="status status--planned">W planach</span></h3>
+                    <p>Opis projektu.</p>
+                    <a href="#" target="_blank">🔗 Dowiedz się więcej</a>
+                </div>
+                -->
+            </div>
+          </div>
+        </section>
+
+        <!-- AKTUALNOŚCI -->
+        <section class="content-section" id="aktualnosci">
+          <div class="content-section-inner">
+            <h2>Aktualności</h2>
+            <div class="card-grid">
+                <!--
+                    Na razie brak wpisów — gdy będzie coś do pokazania (np. obecność na powitaliach),
+                    skopiuj i wypełnij poniższy blok, a potem usuń komentarz wokół niego:
+
+                <div class="info-card">
+                    <span class="news-date">Miesiąc Rok</span>
+                    <h3>Tytuł wpisu</h3>
+                    <p>Opis wydarzenia / relacja / info.</p>
+                </div>
+                -->
+            </div>
+          </div>
+        </section>
+
+        <!-- KONTAKT -->
+        <section class="content-section" id="kontakt">
+          <div class="content-section-inner">
+            <h2>Kontakt</h2>
+
+            <div class="contact-wrapper">
+                <form class="contact-form" action="https://formspree.io/f/TWOJ_FORM_ID" method="POST">
+                    <label for="name">Imię:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Wiadomość:</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Wyślij wiadomość</button>
+                </form>
+
+                <div class="contact-extra">
+                    <p>
+                        <span>E-mail</span>
+                        <a href="mailto:sknbiologowcyfrowych@uni.lodz.pl">sknbiologowcyfrowych@uni.lodz.pl</a>
+                    </p>
+                    <p>
+                        <span>LinkedIn</span>
+                        <a href="https://linkedin.com/company/twoje-kolo" target="_blank">SKN Biologów Cyfrowych</a>
+                    </p>
+                </div>
+            </div>
+          </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Koło Naukowe Biologów Cyfrowych</p>
+    </footer>
+
+    <script>
+    const hero = document.querySelector('.hero');
+    const heroBg = document.querySelector('.hero-bg');
+
+    hero.addEventListener('mousemove', function(event) {
+        const rect = hero.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        const moveX = x * 30;
+        const moveY = y * 30;
+
+        heroBg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+    });
+
+    hero.addEventListener('mouseleave', function() {
+        heroBg.style.transform = `scale(1.1) translate(0, 0)`;
+    });
+
+    const hamburger = document.querySelector('#hamburger');
+    const navLinks = document.querySelector('#nav-links');
+
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+
+    navLinkItems.forEach(function(link) {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+        });
+    });
+    </script>
+
+</body>
+</html>
