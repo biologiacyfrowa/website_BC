@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Sriracha", Arial, sans-serif;
+    font-weight: 400;
+    color: #DFEFF6;
+    background-color: #1B1D3A;
+    line-height: 1.6;
+}
+
+h1 {
+    font-family: "Gochi Hand", Arial, sans-serif;
+    font-size: 85px;
+    color: #DFEFF6;
+}
+
+/* Nawigacja (wspólna) */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #4043A0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: "Gochi Hand", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    color: #DFEFF6;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    display: inline-block;
+    color: #DFEFF6;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #C4455C;
+    transform: translateY(-3px);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Styl dla podstron (treści główne) */
+.page-header {
+    text-align: center;
+    padding: 60px 20px 20px 20px;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+    font-family: "Gochi Hand", Arial, sans-serif;
+    color: #DFEFF6;
+}
+
+.page-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 80px 20px;
+}
+
+/* Kafelki */
+.card-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.info-card {
+    background-color: #2b2b54;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid #C4455C;
+    flex: 1;
+    min-width: 260px;
+    max-width: 320px;
+    text-align: left;
+}
+
+.info-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.info-card p {
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.info-card a {
+    display: inline-block;
+    color: #90cdf4;
+    text-decoration: none;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.info-card a:hover {
+    text-decoration: underline;
+}
+
+/* Przycisk formularza */
+.join-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #C4455C;
+    color: #fff !important;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.join-btn:hover {
+    background-color: #a0364d;
+    transform: translateY(-2px);
+    text-decoration: none !important;
+}
+
+/* Statusy */
+.status {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.status--done {
+    background: #2f6b3a;
+    color: #d4f5dd;
+}
+
+.status--progress {
+    background: #1e40af;
+    color: #dbeafe;
+}
+
+.status--planned {
+    background: #6b5a2f;
+    color: #fff3cd;
+}
+
+.news-date {
+    display: block;
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 6px;
+}
+
+/* Sekcja O nas (dla strony głównej) */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    padding: 10%;
+    gap: 1.5rem;
+    clip-path: polygon(0 15%, 100% 0, 100% 80%, 0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/LOGO_BC_blue_right.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: transform 0.2s ease-out;
+}
+
+#o-nas {
+    padding: 6rem 2rem;
+    background-color: #1B1D3A;
+    display: flex;
+    justify-content: center;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    max-width: 900px;
+}
+
+.photo-frame {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 4px solid #C4455C;
+    box-shadow: 0 0 40px rgba(196, 69, 92, 0.5);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card {
+    max-width: 500px;
+    background-color: #4043A0;
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #DFEFF6;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #4245A4;
+        padding: 1rem 0;
+        z-index: 100;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        text-align: center;
+        padding: 0.8rem 0;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    opacity: 0.7;
+    background-color: #1B1D3A;
+}
