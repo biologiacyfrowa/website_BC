@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - SKN Biologów Cyfrowych</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">skn biologów cyfrowych</div>
+        <button class="hamburger" id="hamburger">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">STRONA GŁÓWNA</a></li>
+            <li><a href="o-nas.html">O NAS</a></li>
+            <li><a href="projekty.html">PROJEKTY</a></li>
+            <li><a href="aktualnosci.html">AKTUALNOŚCI</a></li>
+            <li><a href="kontakt.html" class="active">KONTAKT</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>Kontakt</h2>
+    </div>
+
+    <div class="page-content">
+        <div class="card-grid">
+            <div class="info-card" style="border-color: #63b3ed;">
+                <h3>Dołącz do nas! <span class="status status--done">Zapisy</span></h3>
+                <p>Chcesz dołączyć do koła? Wypełnij formularz zgłoszeniowy:</p>
+                <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=7xpEYw7al0O7fvnUcF6WO17_g53q2uJJlqmK7EEeQcxUMjA4NE9VTjhSOFlCVjZUSjRERFo3N09YUS4u" target="_blank" class="join-btn">📝 Wypełnij formularz</a>
+            </div>
+
+            <div class="info-card">
+                <h3>E-mail</h3>
+                <p>Napisz do nas bezpośrednio:</p>
+                <a href="mailto:skncb@biol.uni.lodz.pl">📧 skncb@biol.uni.lodz.pl</a>
+            </div>
+
+            <div class="info-card">
+                <h3>LinkedIn</h3>
+                <p>Odwiedź nasz oficjalny profil:</p>
+                <a href="https://www.linkedin.com/company/skncb-ul" target="_blank">💼 Profil LinkedIn</a>
+            </div>
+
+            <div class="info-card">
+                <h3>GitHub</h3>
+                <p>Sprawdź nasze kody i repozytoria:</p>
+                <a href="https://github.com/biologiacyfrowa" target="_blank">💻 GitHub Koła</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Koło Naukowe Biologów Cyfrowych</p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('#hamburger');
+        const navLinks = document.querySelector('#nav-links');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    </script>
+</body>
+</html>
