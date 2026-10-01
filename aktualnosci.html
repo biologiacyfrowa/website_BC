@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktualności - SKN Biologów Cyfrowych</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Sriracha&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/zakladki.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">skn biologów cyfrowych</div>
+        <button class="hamburger" id="hamburger">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">STRONA GŁÓWNA</a></li>
+            <li><a href="index.html#o-nas">O NAS</a></li>
+            <li><a href="kontakt.html">KONTAKT</a></li>
+            <li><a href="aktualnosci.html">AKTUALNOŚCI</a></li>
+            <li><a href="projekty.html">PROJEKTY</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>Aktualności</h2>
+    </div>
+
+    <div class="page-content">
+        <div class="card-grid">
+            <div class="info-card">
+                <span class="news-date">Wyróżnione</span>
+                <h3>Quiz Genetyczny</h3>
+                <p>Sprawdź, jaki biokomponent kryje się w Twoim genotypie!</p>
+                <a href="https://tally.so/r/81OB0o">🔗 Rozwiąż quiz</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Koło Naukowe Biologów Cyfrowych</p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('#hamburger');
+        const navLinks = document.querySelector('#nav-links');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekty - SKN Biologów Cyfrowych</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Sriracha&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/zakladki.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">skn biologów cyfrowych</div>
+        <button class="hamburger" id="hamburger">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">STRONA GŁÓWNA</a></li>
+            <li><a href="index.html#o-nas">O NAS</a></li>
+            <li><a href="kontakt.html">KONTAKT</a></li>
+            <li><a href="aktualnosci.html">AKTUALNOŚCI</a></li>
+            <li><a href="projekty.html">PROJEKTY</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>Projekty Koła</h2>
+    </div>
+
+    <div class="page-content">
+        <div class="card-grid">
+            <div class="info-card">
+                <h3>Symulacja CHO <span class="status status--done">Gotowy</span></h3>
+                <p>Projekt interaktywnej symulacji komórek CHO.</p>
+                <a href="https://juliancia.github.io/simulate_cho/" target="_blank">🔗 Zobacz projekt</a>
+            </div>
+
+            <div class="info-card">
+                <h3>Checklista Lab <span class="status status--done">Gotowy</span></h3>
+                <p>Narzędzie do kontrolowania kroków procedur laboratoryjnych.</p>
+                <a href="https://github.com/biologiacyfrowa/checklist_LAB" target="_blank">💻 Zobacz repozytorium</a>
+            </div>
+
+            <div class="info-card">
+                <h3>Wyszukiwarka PubMed <span class="status status--planned">W planach</span></h3>
+                <p>Aplikacja w Pythonie (Streamlit/Biopython) do wyszukiwania literatury naukowej.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Kalendarz Zaliczeń <span class="status status--progress">W trakcie</span></h3>
+                <p>Wspólna aplikacja webowa do śledzenia terminów i notatek (SQLite / Streamlit).</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Generator Haseł <span class="status status--progress">W trakcie</span></h3>
+                <p>Proste, uniwersalne narzędzie generujące bezpieczne hasła o zadanej złożoności.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Magazyn Odczynników <span class="status status--planned">W planach</span></h3>
+                <p>Rejestr zapasów odczynników laboratoryjnych z systemem alertów ważności.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Kalkulator Stężeń <span class="status status--planned">W planach</span></h3>
+                <p>Aplikacja licząca rozcieńczenia i stężenia roztworów na bazie wzoru C1V1 = C2V2.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Koło Naukowe Biologów Cyfrowych</p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('#hamburger');
+        const navLinks = document.querySelector('#nav-links');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    </script>
+</body>
+</html>
